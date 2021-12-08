@@ -9,7 +9,6 @@
 /.idea
 <<<<<<< HEAD
 =======
-
 >>>>>>> master
 # Ignore all logfiles and tempfiles.
 /log/*
