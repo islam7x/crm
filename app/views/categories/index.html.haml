@@ -1,7 +1,7 @@
-%h1 Category
+%h1 Категории
 
--if @category.blank?
-  %b No categories in store
+-if @categories.blank?
+  %b Нет категорий в магазине
 -else
   %table.categories
     %head
@@ -9,8 +9,8 @@
       %th Name
       %th
     %body
-      -@categories.each do |i|
+      -@categories.each do |category|
         %tr
-          %td= i.id
-          %td= link_to i.name, category_path(i)
-          %td= link_to 'Удалить', category_path(i),method: :delete,data: { confirm: 'Точно удалить?' }
+          %td= category.id
+          %td= link_to category.name, category_path(category)
+          %td= link_to 'Удалить', category_path(category),method: :delete,data: { confirm: 'Точно удалить?' }
