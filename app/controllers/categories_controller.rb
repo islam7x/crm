@@ -1,17 +1,17 @@
-class CategoriesController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :find_item, only:[:show, :edit, :destroy, :update]
+class CategoriesController < ApplicationController
+  before_action :find_item, only: %i[show edit destroy update]
 
   def index
-    @category = Category.all
+    @categories = Category.all
   end
 
   def new
     @category = Category.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @category.update(category_params)
@@ -23,9 +23,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    unless @category
-      redirect_to categories_path
-    end
+    redirect_to categories_path unless @category
   end
 
   def create
