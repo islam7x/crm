@@ -1,0 +1,16 @@
+%h1 Category
+
+-if @category.blank?
+  %b No items in store
+-else
+  %table.categories
+    %head
+      %th ID
+      %th Name
+      %th
+    %body
+      -@categories.each do |i|
+        %tr
+          %td= i.id
+          %td= link_to i.name, category_path(i)
+          %td= link_to 'Удалить', category_path(i),method: :delete,data: { confirm: 'Точно удалить?' }
