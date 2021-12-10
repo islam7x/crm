@@ -57,6 +57,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
+gem 'rubocop-rails'
 gem 'haml-rails'
 gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'

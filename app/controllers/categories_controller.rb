@@ -1,9 +1,8 @@
 class CategoriesController < ApplicationController
 
-  before_action :find_item,      only:[:show,:edit,:destroy]
+  before_action :find_item, only:[:show, :edit, :destroy, :update]
 
   def index
-    @categories = Category.all
     @category = Category.all
   end
 
@@ -12,11 +11,9 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    @category = Category.where(id: params[:id]).first
     @category.update(category_params)
     if @category.errors.empty?
       redirect_to category_path(@category)
@@ -46,8 +43,9 @@ class CategoriesController < ApplicationController
   end
 
   private
+
   def find_item
-    @category = Category.where(id: params[:id]).first
+    @category = Category.where(id: params[:id]).find
   end
 
   def category_params
