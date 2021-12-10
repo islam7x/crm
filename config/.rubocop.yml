@@ -4,16 +4,12 @@ AllCops:
   Exclude:
       - db/schema.rb
       - db/seeds.rb
-
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
-
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
-
 Metrics/LineLength:
   Max: 120
-
 Metrics/BlockLength:
   Max: 80
   Exclude:
@@ -21,61 +17,42 @@ Metrics/BlockLength:
     - db/**/*
     - spec/*
     - spec/**/*
-
 Metrics/AbcSize:
   Max: 30
-
 Metrics/MethodLength:
   Max: 50
-
 Style/Documentation:
   Enabled: false
-
 Style/Alias:
   EnforcedStyle: prefer_alias_method
-
 Style/AsciiComments:
   Enabled: false
-
 Style/IfUnlessModifier:
   Enabled: false
-
 Style/ClassAndModuleChildren:
   Enabled: false
-
 Style/Lambda:
   Enabled: false
-
 Style/NumericLiterals:
   Enabled: false
-
 Style/NumericPredicate:
   Enabled: false
-
 Naming/PredicateName:
   Enabled: false
-
 Naming/AccessorMethodName:
   Enabled: false
-
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
-
 RSpec/LetSetup:
   Enabled: false
-
 RSpec/MultipleExpectations:
   Enabled: false
-
 RSpec/ExampleLength:
   Enabled: false
-
 RSpec/NestedGroups:
   Max: 5
-
 Metrics/ClassLength:
   Max: 150
-
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
 Layout/EmptyLines:
@@ -86,5 +63,4 @@ Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
-
 require: rubocop-rspec
