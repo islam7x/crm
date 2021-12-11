@@ -201,10 +201,6 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.14.0)
       parser (>= 3.0.1.1)
-    rubocop-rails (2.12.4)
-      activesupport (>= 4.2.0)
-      rack (>= 1.1)
-      rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
     ruby_parser (3.18.1)
       sexp_processor (~> 4.16)
@@ -287,7 +283,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 6.1.4)
-  rubocop-rails
+  rubocop
   sass-rails (~> 5.0)
   selenium-webdriver
   simple_form
