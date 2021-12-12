@@ -8,7 +8,7 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 Metrics/BlockLength:
   Max: 80
