@@ -1,15 +1,15 @@
 h1 Категории
 
--if @categories.blank?
+- if @categories.blank?
   b Нет категорий
--else
+- else
   table.categories
     head
       th ID
       th Name
       th
     body
-      -@categories.each do |category|
+      - @categories.each do |category|
         tr
           td = category.id
           td = link_to category.name, category_path(category)
