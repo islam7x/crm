@@ -1,10 +1,7 @@
-
-.container
-  h1 Категории
-
-  - if @categories.blank?
+h1 Категории
+- if @categories.blank?
     b Нет категорий
-  - else
+- else
     table.container
       head
         th ID
@@ -18,7 +15,5 @@
             td = link_to category.name, category_path(category)
             td = link_to 'Удалить', category_path(category), method: :delete
             td = link_to 'Редактировать категорию', edit_category_path(category)
-  br
-  = link_to 'Создать категорию', new_category_path
-
-
+br
+= link_to 'Создать категорию', new_category_path
