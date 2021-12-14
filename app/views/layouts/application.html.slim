@@ -12,10 +12,15 @@ html
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container-fluid
         a.navbar-brand href='#'  CRM
+        button.navbar-toggler[type='button'
+                              data-bs-target='#navbarNav'
+                              data-bs-toggle='collapse'
+                              aria-controls='navbarNav'
+                              aria-expanded='false'
+                              aria-label='Toggle navigation']
         #navbarNav.collapse.navbar-collapse
           ul.navbar-nav
             li.nav-item
               a.nav-link.active aria-current='page' href='/categories' Categories
     .container
       = yield
-  =
