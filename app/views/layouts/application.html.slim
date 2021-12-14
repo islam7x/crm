@@ -9,16 +9,15 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-   .container
+
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container-fluid
-        a.navbar-brand href='#'  Navbar
-        button.navbar-toggler aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'
-        br data-bs-target='#navbarNav' data-bs-toggle='collapse' type='button'
+        a.navbar-brand href="#"  Navbar
+        button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button"
           span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse
           ul.navbar-nav
             li.nav-item
-              a.nav-link.active aria-current='page' href='/categories' Categories
+              a.nav-link.active aria-current="page" href="/categories"  Categories
 
     = yield
