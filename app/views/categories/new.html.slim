@@ -3,4 +3,5 @@ br
 = simple_form_for @category do |f|
   = f.input :name
   br
-  = f.button :submit, 'Создать категорию', class: 'btn btn-primary'
+  .button.btn.btn-primary
+    = f.button :submit, 'Создать категорию', class: 'btn btn-primary'
