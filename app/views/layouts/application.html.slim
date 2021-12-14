@@ -9,6 +9,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
+   .container
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container-fluid
         a.navbar-brand href='#'  Navbar
@@ -19,5 +20,5 @@ html
           ul.navbar-nav
             li.nav-item
               a.nav-link.active aria-current='page' href='/categories' Categories
-  .container
+
     = yield
