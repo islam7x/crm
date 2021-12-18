@@ -2,6 +2,7 @@
 
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show edit destroy update]
+  before_action :set_column, only: %i[show]
 
   def index
     @categories = Category.all
@@ -40,6 +41,10 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def set_column
+    @columns = Column.where(category_id: @category.id)
+  end
 
   def set_category
     @category = Category.find(params[:id])
