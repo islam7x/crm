@@ -4,11 +4,6 @@ class ColumnsController < ApplicationController
   before_action :set_column, only: %i[ update edit destroy ]
   before_action :set_category, only: %i[update edit destroy  create new]
 
-  def index
-    @columns = Column.all
-    redirect_to category_path
-  end
-
   def new
     @column = Column.new
   end
@@ -34,14 +29,14 @@ class ColumnsController < ApplicationController
   end
 
   def destroy
-    @column.destroy
+    @column.update(deleted_at: Time.current)
     redirect_to category_path(@category)
   end
 
   private
 
   def column_params
-    params.require(:column).permit(:name, :deleted_at)
+    params.require(:column).permit(:name)
   end
 
   def set_column

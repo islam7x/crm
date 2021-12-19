@@ -1,17 +1,16 @@
 h1 = @category.name
-ul type='none'
-  li
-      = link_to 'Добавить столбец', new_category_column_path(@category), class: 'btn btn-primary'
-  .mt-2
-  h1 Колонны
+
+= link_to 'Добавить столбец', new_category_column_path(@category), class: 'btn btn-primary'
+.mt-2
+  h1 Столбцы
   - if @columns.blank?
-    b Нет колон
+    b Нет столбцов
   - else
     table.table.table-striped
       head
         th ID
         th Имя
-        th
+        th Активный
         th
         th
       body
@@ -21,11 +20,10 @@ ul type='none'
             td = link_to column.name, category_column_path(column.category_id, column)
             td
               - if column.deleted_at.nil?
-                p.btn.btn-success Активно
+                span.btn.btn-success Да
               - else
-                p.btn.btn-secondary Неактивно
+                span.btn.btn-secondary Нет
             td
-              = link_to 'Удалить', category_column_path(column.category_id, column), class: 'btn btn-danger',
-                      method: :delete
+              = link_to 'Удалить', category_column_path(column.category_id, column), class: 'btn btn-danger', method: :delete
             td
               = link_to 'Редактировать', edit_category_column_path(column.category_id, column), class: 'btn btn-primary'

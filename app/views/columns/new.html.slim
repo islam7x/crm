@@ -1,7 +1,7 @@
-h1 Создать колонну
+h1 Создать столбец
 
 br
 = simple_form_for @column, url: category_columns_path(@category) do |f|
   = f.input :name, input_html: { class: 'form-control' }
   .mt-2
-    = f.submit 'Создать колонну', class: 'btn btn-success'
+    = f.submit 'Создать столбец', class: 'btn btn-success'
