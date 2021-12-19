@@ -35,7 +35,7 @@ class ColumnsController < ApplicationController
 
   def destroy
     @column.destroy
-    redirect_to category_path
+    redirect_to category_path(@category)
   end
 
   private
