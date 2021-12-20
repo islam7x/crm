@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ColumnsController < ApplicationController
-  before_action :set_column, only: %i[ update edit destroy ]
-  before_action :set_category, only: %i[update edit destroy  create new]
+  before_action :set_column, only: %i[update edit destroy]
+  before_action :set_category, only: %i[update edit destroy create new]
 
   def new
     @column = Column.new
@@ -17,7 +17,6 @@ class ColumnsController < ApplicationController
       render 'edit'
     end
   end
-
 
   def create
     @column = @category.columns.new(column_params)
