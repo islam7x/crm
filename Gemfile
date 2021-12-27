@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bootstrap', '~> 5.1.3'
+gem 'devise'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'slim'
