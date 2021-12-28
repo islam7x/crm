@@ -23,5 +23,14 @@ html
           ul.navbar-nav
             li.nav-item
               a.nav-link.active aria-current='page' href='/categories' Categories
+      ul.navbar-nav
+        .container
+          .sessionInfo
+            - if current_user
+              = current_user.login
+                a.nav-link aria-current='page' href='/users/sign_out' Выйти
+            - else
+                li.nav-item
+                  a.nav-link aria-current='page' href='/users/sign_in' Войти
     .container
       = yield
