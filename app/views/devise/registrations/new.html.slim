@@ -3,18 +3,18 @@ h2 Зарегистрироваться
   = f.error_notification
   .form-inputs
     = f.input :email,
-      required: true,
-      autofocus: true,
-      input_html: { autocomplete: 'email', class: 'form-control' }
+              required: true,
+              autofocus: true,
+              input_html: { autocomplete: 'email', class: 'form-control' }
     = f.input :password,
-      label: 'Пароль',
-      required: true,
-      hint: ("более #{@minimum_password_length} символов" if @minimum_password_length),
-      input_html: { autocomplete: 'new-password', class: 'form-control' }
+              label: 'Пароль',
+              required: true,
+              hint: ("более #{@minimum_password_length} символов" if @minimum_password_length),
+              input_html: { autocomplete: 'new-password', class: 'form-control' }
     = f.input :password_confirmation,
-      label: 'Подтвердите пароль',
-      required: true,
-      input_html: { autocomplete: 'new-password', class: 'form-control' }
+              label: 'Подтвердите пароль',
+              required: true,
+              input_html: { autocomplete: 'new-password', class: 'form-control' }
   .mt-2
     .form-actions
     = f.submit 'Зарегистрироваться', class: 'btn btn-success'

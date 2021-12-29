@@ -6,4 +6,7 @@ Rails.application.routes.draw do
     resources :columns, except: %i[index show]
   end
   root 'categories#index'
+  devise_scope :user do
+    get 'users/sign_out' => "devise/sessions#destroy"
+  end
 end
