@@ -4,9 +4,9 @@ h2 Отправить инструкции по разблокировке по�
   = f.full_error :unlock_token
   .form-inputs
     = f.input :email,
-            required: true,
-            autofocus: true,
-            input_html: { autocomplete: "email" }
+              required: true,
+              autofocus: true,
+              input_html: { autocomplete: "email" }
   .form-actions
     = f.button :submit, "Отправить инструкции по разблокировке повторно"
 = render "devise/shared/links"

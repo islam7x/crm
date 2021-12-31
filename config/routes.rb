@@ -6,6 +6,4 @@ Rails.application.routes.draw do
     resources :columns, except: %i[index show]
   end
   root 'categories#index'
-  devise_scope :user do
-  end
 end

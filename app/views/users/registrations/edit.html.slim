@@ -8,18 +8,18 @@ h2
       p
         | Currently waiting confirmation for: #{resource.unconfirmed_email}
     = f.input :password,
-            label: 'Пароль',
-            hint: 'оставьте поле пустым, если не хотите его менять',
-            required: false,
-            input_html: { autocomplete: 'new-password' }
+              label: 'Пароль',
+              hint: 'оставьте поле пустым, если не хотите его менять',
+              required: false,
+              input_html: { autocomplete: 'new-password' }
     = f.input :password_confirmation,
-            required: false,
-            input_html: { autocomplete: 'new-password' }
+              required: false,
+              input_html: { autocomplete: 'new-password' }
     = f.input :current_password,
-            label: 'Текущий пароль' ,
-            hint: 'нам нужен ваш текущий пароль для подтверждения ваших изменений',
-            required: true,
-            input_html: { autocomplete: 'current-password' }
+              label: 'Текущий пароль' ,
+              hint: 'нам нужен ваш текущий пароль для подтверждения ваших изменений',
+              required: true,
+              input_html: { autocomplete: 'current-password' }
   .form-actions
     = f.button :submit, 'Обновить'
 h3 Аннулировать мою учетную запись
