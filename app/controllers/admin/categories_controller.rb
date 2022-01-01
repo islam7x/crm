@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::BaseController
   before_action :set_category, only: %i[show edit destroy update]
   before_action :set_columns, only: %i[show]
 
@@ -16,20 +16,20 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to category_path(@category)
+      redirect_to admin_category_path(@category)
     else
       render 'edit'
     end
   end
 
   def show
-    redirect_to categories_path unless @category
+    redirect_to admin_categories_path unless @category
   end
 
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to category_path(@category)
+      redirect_to admin_category_path(@category)
     else
       render 'new'
     end
@@ -37,7 +37,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to categories_path
+    redirect_to admin_categories_path
   end
 
   private

@@ -2,8 +2,10 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :categories do
-    resources :columns, except: %i[index show]
+  namespace :admin do
+    resources :categories do
+      resources :columns, except: %i[index show]
+    end
   end
-  root 'categories#index'
+  root 'admin/categories#index'
 end

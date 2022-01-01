@@ -1,11 +1,12 @@
-h2 Забыли пароль?
-= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = f.error_notification
-  .form-input
-    = f.input :email,
-              required: true,
-              autofocus: true,
-              input_html: { autocomplete: 'email', class: 'form-control' }
-  .mt-2
-    = f.submit 'Получить инструкции по сбросу пароля', class: 'btn btn-success'
+.col-md-4.col-md-offset-4
+  h2 Забыли пароль?
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    = f.error_notification
+    .form-input
+      = f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: 'email', class: 'form-control' }
+    .mt-2
+      = f.submit 'Получить инструкции по сбросу пароля', class: 'btn btn-success'
 = render 'devise/shared/links'

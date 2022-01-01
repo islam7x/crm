@@ -1,6 +1,6 @@
 h1 = @category.name
 
-= link_to 'Добавить столбец', new_category_column_path(@category), class: 'btn btn-primary'
+= link_to 'Добавить столбец', new_admin_category_column_path(@category), class: 'btn btn-primary'
 .mt-2
   h1 Столбцы
   - if @columns.blank?
@@ -17,13 +17,13 @@ h1 = @category.name
         - @columns.each do |column|
           tr
             td = column.id
-            td = link_to column.name, category_column_path(column.category_id, column)
+            td = link_to column.name, admin_category_column_path(column.category_id, column)
             td
               - if column.deleted_at.nil?
                 span.btn.btn-success Да
               - else
                 span.btn.btn-secondary Нет
             td
-              = link_to 'Удалить', category_column_path(column.category_id, column), class: 'btn btn-danger', method: :delete
+              = link_to 'Удалить', admin_category_column_path(column.category_id, column), class: 'btn btn-danger', method: :delete
             td
-              = link_to 'Редактировать', edit_category_column_path(column.category_id, column), class: 'btn btn-primary'
+              = link_to 'Редактировать', edit_admin_category_column_path(column.category_id, column), class: 'btn btn-primary'

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ColumnsController < ApplicationController
+class Admin::ColumnsController < Admin::BaseController
   before_action :set_column, only: %i[update edit destroy]
   before_action :set_category, only: %i[update edit destroy create new]
 
@@ -12,7 +12,7 @@ class ColumnsController < ApplicationController
 
   def update
     if @column.update(column_params)
-      redirect_to category_path(@category)
+      redirect_to admin_category_path(@category)
     else
       render 'edit'
     end
@@ -21,7 +21,7 @@ class ColumnsController < ApplicationController
   def create
     @column = @category.columns.new(column_params)
     if @column.save
-      redirect_to category_path(@category)
+      redirect_to admin_category_path(@category)
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class ColumnsController < ApplicationController
 
   def destroy
     @column.update(deleted_at: Time.current)
-    redirect_to category_path(@category)
+    redirect_to admin_category_path(@category)
   end
 
   private
