@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
-  class ColumnsController <BaseController
+  class ColumnsController < BaseController
     before_action :set_column, only: %i[update edit destroy]
     before_action :set_category, only: %i[update edit destroy create new]
 
