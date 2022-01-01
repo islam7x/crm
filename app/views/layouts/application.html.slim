@@ -10,8 +10,8 @@ html
 
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      .container-fluid
-        a.navbar-brand href='#'  CRM
+      .container
+        a.navbar-brand href='/' CRM
         button.navbar-toggler[type='button'
                               data-bs-target='#navbarNav'
                               data-bs-toggle='collapse'
@@ -23,12 +23,11 @@ html
           ul.navbar-nav
             li.nav-item
               a.nav-link.active aria-current='page' href='/categories' Categories
-      ul.navbar-nav
-        .container
-          - if current_user
-            a.nav-link data-method='delete' aria-current='page' href='/users/sign_out' Выйти
-          - else
-            a.nav-link aria-current='page' href='/users/sign_in' Войти
+          ul.navbar-nav.ms-auto.mb-2.mb-lg-0
+            - if user_signed_in?
+              a.nav-link data-method='delete' aria-current='page' href='/users/sign_out' Выйти
+            - else
+              a.nav-link aria-current='page' href='/users/sign_in' Войти
 
     .container
       = yield
