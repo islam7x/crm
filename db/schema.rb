@@ -33,11 +33,13 @@ ActiveRecord::Schema.define(version: 2022_01_03_210638) do
   create_table "items", force: :cascade do |t|
     t.integer "quantity"
     t.float "weight"
-    t.integer "column_id"
-    t.integer "category_id"
+    t.bigint "column_id"
+    t.bigint "category_id"
     t.datetime "datetime_of_create"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["column_id"], name: "index_items_on_column_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -5,8 +5,8 @@ class CreateItems < ActiveRecord::Migration[6.1]
     create_table :items do |t|
       t.integer :quantity
       t.float :weight
-      t.integer :column_id
-      t.integer :category_id
+      t.references :column
+      t.references :category
       t.datetime :datetime_of_create
       t.timestamps
     end
