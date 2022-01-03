@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   namespace :admin do
     resources :categories do
-      resources :columns, except: %i[index show]
+      resources :columns, except: %i[index show], module: :categories
     end
   end
   root 'admin/categories#index'
