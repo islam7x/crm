@@ -2,6 +2,8 @@
 
 module Admin
   class BaseController < ApplicationController
-    #redirect_to(new_user_session_path) unless current_user.admin?
+    #def admin_user
+    #  redirect_to(new_user_session_path) unless current_user.admin?
+    #end
   end
 end
