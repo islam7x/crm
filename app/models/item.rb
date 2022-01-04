@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Column < ApplicationRecord
+class Item < ApplicationRecord
+  belongs_to :column
   belongs_to :category
-  has_many :items
 end
