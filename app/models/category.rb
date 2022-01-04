@@ -2,5 +2,5 @@
 
 class Category < ApplicationRecord
   has_many :columns
-  has_many :items
+  has_many :items, dependent: :destroy
 end

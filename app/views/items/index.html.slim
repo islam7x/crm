@@ -1,0 +1,17 @@
+h1 Товары
+- if @items.blank?
+  p Нет товаров
+- else
+  table.table.table-striped
+    head
+      th ID
+      th Количество
+      th Вес
+      th Дата создания
+    body
+      - @items.each do |item|
+        tr
+          td = item.id
+          td = item.quantity
+          td = item.weight
+          td = item.datetime_of_create

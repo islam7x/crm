@@ -4,6 +4,7 @@ module Admin
   class CategoriesController < BaseController
     before_action :set_category, only: %i[show edit destroy update]
     before_action :set_columns, only: %i[show]
+    before_action :set_item, only: %i[show]
 
     def index
       @categories = Category.all
@@ -45,6 +46,10 @@ module Admin
 
     def set_columns
       @columns = @category.columns
+    end
+
+    def set_item
+      @items = @category.items
     end
 
     def set_category

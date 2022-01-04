@@ -1,0 +1,7 @@
+h1 Изменить товар
+.col-md-4.col-md-offset-4
+  = simple_form_for @item, url: category_item_path(@category) do |f|
+    = f.input :quantity, input_html: { class: 'form-control' }
+    = f.input :weight, input_html: { class: 'form-control' }
+    .mt-2
+      = f.submit 'Изменить товар', class: 'btn btn-success' 
