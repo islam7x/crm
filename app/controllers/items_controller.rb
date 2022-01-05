@@ -3,7 +3,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[edit destroy update]
   before_action :set_category, only: %i[update edit destroy create new]
-
+  before_action :set_column, only: %i[new edit]
   def index
     @items = Item.all
   end
@@ -15,8 +15,7 @@ class ItemsController < ApplicationController
   def create
     @item = @category.items.new(item_params)
     if @item.save
-      redirect_to admin_category_path(@category)
-      @item.update(datetime_of_create: Time.current.to_formatted_s(:long))
+      redirect_to category_items_path(@category)
     else
       render 'new'
     end
@@ -26,7 +25,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to admin_category_path(@category)
+      redirect_to category_items_path(@category)
     else
       render 'edit'
     end
@@ -34,7 +33,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to admin_category_path(@category)
+    redirect_to category_items_path(@category)
   end
 
   private
@@ -43,8 +42,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def set_column
+    @columns = @category.columns
+  end
+
   def item_params
-    params.require(:item).permit(:quantity, :weight)
+    params.require(:item).permit(:quantity, :weight, :column_id)
   end
 
   def set_category

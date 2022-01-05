@@ -1,7 +1,11 @@
 h1 Изменить товар
 .col-md-4.col-md-offset-4
   = simple_form_for @item, url: category_item_path(@category) do |f|
-    = f.input :quantity, input_html: { class: 'form-control' }
-    = f.input :weight, input_html: { class: 'form-control' }
+    = f.input :quantity, label: 'Количество', input_html: { class: 'form-control' }
+    = f.input :weight, label: 'Вес', input_html: { class: 'form-control' }
+    = f.input :datetime_of_create, label: 'Дата:', input_html: { class: 'form-control' }
+    = f.input :column_id, as: :select,
+              collection: @columns.map { |column| [column.name, column.id] },
+              input_html: { class: 'form-control' }
     .mt-2
       = f.submit 'Изменить товар', class: 'btn btn-success'

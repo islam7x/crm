@@ -8,6 +8,8 @@ h1 Товары
       th Количество
       th Вес
       th Дата создания
+      th Столбец
+      th
     body
       - @items.each do |item|
         tr
@@ -15,3 +17,5 @@ h1 Товары
           td = item.quantity
           td = item.weight
           td = item.datetime_of_create
+          td = item.column_id
+          td = link_to 'Изменить', edit_category_item_path(item.category_id, item), class: 'btn btn-primary'

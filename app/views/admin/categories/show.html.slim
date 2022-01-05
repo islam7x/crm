@@ -30,25 +30,3 @@ br
               = link_to 'Удалить', admin_category_column_path(column.category_id, column), class: 'btn btn-danger', method: :delete
             td
               = link_to 'Редактировать', edit_admin_category_column_path(column.category_id, column), class: 'btn btn-primary'
-.mt-2
-  h1 Товары
-  - if @items.blank?
-    p Нет товаров
-  - else
-    table.table.table-striped
-      head
-        th ID
-        th Количество
-        th Вес
-        th Дата создания
-        th
-        th
-      body
-        - @items.each do |item|
-          tr
-            td = item.id
-            td = item.quantity
-            td = item.weight
-            td = item.datetime_of_create
-            td = link_to 'Удалить', category_item_path(item.category_id, item), class: 'btn btn-danger', method: :delete
-            td = link_to 'Изменить', edit_category_item_path(item.category_id, item), class: 'btn btn-primary'
