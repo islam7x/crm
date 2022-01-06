@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i[edit destroy update]
   before_action :set_category, only: %i[update edit destroy create new]
   before_action :set_columns, only: %i[new edit]
+
   def index
     @items = Item.all
   end
