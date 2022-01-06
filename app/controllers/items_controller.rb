@@ -3,7 +3,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[edit destroy update]
   before_action :set_category, only: %i[update edit destroy create new]
-  before_action :set_column, only: %i[new edit]
+  before_action :set_columns, only: %i[new edit]
   def index
     @items = Item.all
   end
@@ -42,12 +42,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def set_column
+  def set_columns
     @columns = @category.columns
   end
 
   def item_params
-    params.require(:item).permit(:quantity, :weight, :column_id)
+    params.require(:item).permit(:quantity, :weight, :column_id, :datetime_of_create)
   end
 
   def set_category
