@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     resources :categories do
       resources :columns, except: %i[index show], module: :categories
     end
-
   end
   root 'admin/categories#index'
 end
