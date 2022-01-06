@@ -7,11 +7,11 @@ h1 Создать товар
               wrappers: :horizontal_select_date,
               as: :datetime,
               label: 'Дата:',
-              input_html: { value: DateTime.now.strftime('%d/%m/%Y  %H:%M'),
+              input_html: { value: DateTime.now.strftime('%d/%m/%Y %H:%M'),
                             class: 'form-control' }
     = f.input :column_id,
               as: :select,
-              collection: @columns.map{ |column| [column.name, column.id] },
+              collection: @columns.map { |column| [column.name, column.id] },
               label: 'Столбец:',
               input_html: { class: 'form-control' }
     .mt-2

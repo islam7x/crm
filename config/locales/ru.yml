@@ -1,9 +1,9 @@
 ru:
   date:
-    order: [ !ruby/symbol day, !ruby/symbol month, !ruby/symbol year ]
+    order: [!ruby/symbol day, !ruby/symbol month, !ruby/symbol year]
     formats:
-      default: "%Y-%m-%d"
-      short: "%b %d"
-      long: "%B %d, %Y"
-    day_names: [ Понедельник, Вторник, Среду, Четверг, Пятница, Суббота, Воскресенье ]
-    month_names: [ ~, Январь, Февраль, Март, Апрель, Мая, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь ]
+      default: '%Y-%m-%d'
+      short: '%b %d'
+      long: '%B %d, %Y'
+    day_names: [Понедельник, Вторник, Среду, Четверг, Пятница, Суббота, Воскресенье]
+    month_names: [~, Январь, Февраль, Март, Апрель, Мая, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
