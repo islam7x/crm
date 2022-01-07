@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :categories do
-    resources :items, expect: %i[show]
+    resources :items, expect: %i[show], module: :categories
   end
 
   namespace :admin do
