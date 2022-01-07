@@ -1,33 +1,255 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
+---
 en:
-  hello: "Hello world"
+  date:
+    abbr_day_names:
+    - Su
+    - Mo
+    - Tu
+    - We
+    - Th
+    - Fr
+    - Sa
+    abbr_month_names:
+    -
+    - JAN
+    - FEB
+    - MAR
+    - APR
+    - MAY
+    - JUN
+    - JUL
+    - AUG
+    - SEP
+    - OCT
+    - NOV
+    - DEC
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: "%d.%m.%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: about %{count} hr
+        few: about %{count} hrs
+        many: about %{count} hrs
+        other: about %{count} hr
+      about_x_months:
+        one: about %{count} month
+        few: about %{count} months
+        many: about %{count} months
+        other: about %{count} month
+      about_x_years:
+        one: about %{count} yr
+        few: about %{count} yrs
+        many: about %{count} yrs
+        other: about %{count} yrs
+      almost_x_years:
+        one: almost 1 year
+        few: almost %{count} years
+        many: almost %{count} years
+        other: almost %{count} year
+      half_a_minute: half a minute
+      less_than_x_seconds:
+        one: less than %{count} second
+        few: less than %{count} seconds
+        many: less than %{count} seconds
+        other: less than %{count} seconds
+      less_than_x_minutes:
+        one: less than %{count} minute
+        few: less than %{count} minutes
+        many: less than %{count} minutes
+        other: less than %{count} minute
+      over_x_years:
+        one: more than %{count} yr
+        few: more than %{count} yrs
+        many: more than %{count} yrs
+        other: more than %{count} yrs
+      x_seconds:
+        one: "%{count} second"
+        few: "%{count} seconds"
+        many: "%{count} seconds"
+        other: "%{count} seconds"
+      x_minutes:
+        one: "%{count} minute"
+        few: "%{count} minutes"
+        many: "%{count} minutes"
+        other: "%{count} minute"
+      x_days:
+        one: "%{count} day"
+        few: "%{count} days"
+        many: "%{count} days"
+        other: "%{count} day"
+      x_months:
+        one: "%{count} month"
+        few: "%{count} months"
+        many: "%{count} months"
+        other: "%{count} month"
+      x_years:
+        one: "%{count} yr"
+        few: "%{count} yrs"
+        many: "%{count} yrs"
+        other: "%{count} yrs"
+    prompts:
+      second: Seconds
+      minute: Minutes
+      hour: Hours
+      day: Day
+      month: Month
+      year: Year
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: requires confirmation
+      blank: can't be blank
+      confirmation: not match value of %{attribute}
+      empty: can't be blank
+      equal_to: value must be %{count}
+      even: must be even
+      exclusion: value reserved
+      greater_than: must be greater %{count}
+      greater_than_or_equal_to: must be equal or greater %{count}
+      inclusion: wrong value
+      invalid: wrong value
+      less_than: must be less %{count}
+      less_than_or_equal_to: must be equal or less %{count}
+      model_invalid: 'Errors: %{errors}'
+      not_a_number: not a number
+      not_an_integer: not an integer
+      odd: must be odd
+      other_than: must be different from %{count}
+      present: must be blank
+      required: required
+      taken: taken
+      too_long:
+        one: too long (must be less %{count} symbols)
+        few: too long (must be less %{count} symbols)
+        many: too long (must be less %{count} symbols)
+        other: too long (must be less %{count} symbols)
+      too_short:
+        one: too short (must be more %{count} symbols)
+        few: too short (must be more %{count} symbols)
+        many: too short (must be more %{count} symbols)
+        other: too short (must be more %{count} symbols)
+      wrong_length:
+        one: wrong length (must be %{count} symbols)
+        few: wrong length (must be %{count} symbols)
+        many: wrong length (must be %{count} symbols)
+        other: wrong length (must be %{count} symbols)
+    template:
+      body: 'Plese check the errors:'
+      header:
+        one: "%{model}: not saved because of %{count} error"
+        few: "%{model}: not saved because of %{count} errors"
+        many: "%{model}: not saved because of %{count} errors"
+        other: "%{model}: not saved because of %{count} error"
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: RUR
+    format:
+      delimiter: " "
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion:
+            one: bln
+            few: bln
+            many: bln
+            other: bln
+          million:
+            one: million
+            few: million
+            many: million
+            other: million
+          quadrillion:
+            one: quadrillion
+            few: quadrillion
+            many: quadrillion
+            other: quadrillion
+          thousand:
+            one: K
+            few: K
+            many: K
+            other: K
+          trillion:
+            one: trillion
+            few: trillion
+            many: trillion
+            other: trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: byte
+            few: byte
+            many: byte
+            other: byte
+          eb: EB
+          gb: GB
+          kb: KB
+          mb: MB
+          pb: PB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " и "
+      two_words_connector: " и "
+      words_connector: ", "
+  time:
+    am: AM
+    formats:
+      default: "%a, %d %b %Y, %H:%M:%S %z"
+      long: "%d %B %Y, %H:%M"
+      short: "%d %b, %H:%M"
+    pm: PM
