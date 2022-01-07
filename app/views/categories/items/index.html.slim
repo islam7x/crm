@@ -16,6 +16,6 @@ h1 Товары
           td = item.id
           td = item.quantity
           td = item.weight
-          td = item.try(:datetime_of_create).try(:strftime, '%d/%m/%Y %H:%M')
+          td = item.datetime_of_create.try(:strftime, '%d/%m/%Y %H:%M')
           td = item.column_id
           td = link_to 'Изменить', edit_category_item_path(item.category_id, item), class: 'btn btn-primary'

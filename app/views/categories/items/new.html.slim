@@ -7,7 +7,7 @@ h1 Создать товар
               wrappers: :horizontal_select_date,
               as: :datetime,
               label: 'Дата:',
-              input_html: { value: DateTime.now.strftime('%d/%m/%Y %H:%M'),
+              input_html: { value: Time.current.strftime('%d/%m/%Y %H:%M'),
                             class: 'form-control' }
     = f.input :column_id,
               as: :select,
