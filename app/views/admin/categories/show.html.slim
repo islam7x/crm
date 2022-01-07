@@ -27,8 +27,11 @@ br
               - else
                 span.btn.btn-secondary Нет
             td
-              = link_to 'Удалить', admin_category_column_path(column.category_id, column),
-                                   class: 'btn btn-danger', method: :delete
+              = link_to 'Удалить',
+                        admin_category_column_path(column.category_id, column),
+                        class: 'btn btn-danger',
+                        method: :delete
             td
-              = link_to 'Редактировать', edit_admin_category_column_path(column.category_id, column),
-                                         class: 'btn btn-primary'
+              = link_to 'Редактировать',
+                        edit_admin_category_column_path(column.category_id, column),
+                        class: 'btn btn-primary'
