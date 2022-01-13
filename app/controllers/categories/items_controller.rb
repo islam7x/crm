@@ -4,7 +4,7 @@ module Categories
   class ItemsController < ApplicationController
     before_action :set_item, only: %i[edit destroy update]
     before_action :set_category, only: %i[update index edit destroy create new]
-    before_action :set_columns, only: %i[ index new edit]
+    before_action :set_columns, only: %i[index new edit]
 
     def index
       @items = @category.items
