@@ -37,7 +37,7 @@ module Admin
       private
 
       def column_params
-        params.require(:column).permit(:name)
+        params.require(:column).permit(:name, :position)
       end
 
       def set_column
