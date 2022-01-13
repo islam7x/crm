@@ -2,7 +2,7 @@
 
 class Column < ApplicationRecord
   acts_as_list add_new_at: :bottom, scope: :category
-  
+
   belongs_to :category
 
   has_many :items
