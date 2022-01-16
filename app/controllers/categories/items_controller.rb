@@ -4,7 +4,7 @@ module Categories
   class ItemsController < ApplicationController
     before_action :set_item, only: %i[edit destroy update]
     before_action :set_category, only: %i[update index edit destroy create new]
-    before_action :set_columns, only: %i[index new edit]
+    before_action :set_columns, only: %i[index new edit create]
 
     def index
       @items = @category.items
@@ -15,7 +15,7 @@ module Categories
     end
 
     def create
-      @item = @category.items.new(item_params)
+      @item = Item.new(item_params.merge(category_id: @category.id))
       if @item.save
         redirect_to category_items_path(@category)
       else
@@ -49,7 +49,7 @@ module Categories
     end
 
     def item_params
-      params.require(:item).permit(:quantity, :weight, :column_id, :datetime_of_create)
+      params.require(:item).permit(:quantity, :weight, :column_id, :datetime_of_create, :category_id)
     end
 
     def set_category

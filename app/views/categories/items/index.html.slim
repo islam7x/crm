@@ -1,21 +1,13 @@
-h1 Товары
-- if @items.blank?
+h1 = @category.name
+- if @columns.blank?
   p Нет товаров
 - else
   table.table.table-striped
-    head
-      th ID
-      th Количество
-      th Вес
-      th Дата создания
-      th Столбец
-      th
-    body
+    thead
+      - @columns.each do |column|
+        th colspan='2' = column.name
+    tbody
       - @items.each do |item|
         tr
-          td = item.id
-          td = item.quantity
-          td = item.weight
-          td = item.datetime_of_create.try(:strftime, '%d/%m/%Y %H:%M')
-          td = item.column_id
-          td = link_to 'Изменить', edit_category_item_path(item.category_id, item), class: 'btn btn-primary'
+          td Вес: #{item.weight}
+          td Кол-во: #{item.quantity}
