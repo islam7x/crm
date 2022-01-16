@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :items, expect: %i[show], module: :categories
   end
 
-  resources :dashboards, only: %i[index]
+  resource :dashboards, only: %i[show]
 
   namespace :admin do
     resources :categories do
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'dashboards#index'
+  root 'dashboards#show'
 end

@@ -4,7 +4,7 @@ module Categories
   class ItemsController < ApplicationController
     before_action :set_item, only: %i[edit destroy update]
     before_action :set_category, only: %i[update index edit destroy create new]
-    before_action :set_columns, only: %i[index new edit create]
+    before_action :set_columns, only: %i[index new edit]
 
     def index
       @items = @category.items
@@ -49,7 +49,7 @@ module Categories
     end
 
     def item_params
-      params.require(:item).permit(:quantity, :weight, :column_id, :datetime_of_create, :category_id)
+      params.require(:item).permit(:quantity, :weight, :column_id, :datetime_of_create)
     end
 
     def set_category
