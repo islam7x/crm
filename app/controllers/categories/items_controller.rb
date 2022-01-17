@@ -8,6 +8,7 @@ module Categories
 
     def index
       @items = ::Categories::Items::ListService.call(category: @category).result
+      @columns_count = @columns.size
     end
 
     def new

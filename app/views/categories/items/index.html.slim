@@ -13,6 +13,6 @@
     tbody
       - @items.each do |date, item_attrs|
         tr.text-center
-          - item_attrs.each do |item|
-            td = item.decorate.display_value
+          - @columns_count.times do |i|
+            td = item_attrs[i]&.decorate&.display_value
           td = date
