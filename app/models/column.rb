@@ -9,8 +9,6 @@ class Column < ApplicationRecord
 
   before_update :check_bottom_position
 
-  scope :order_by_position, -> { order(position: :asc) }
-
   private
 
   def check_bottom_position

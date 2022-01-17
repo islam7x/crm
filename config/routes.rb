@@ -7,11 +7,13 @@ Rails.application.routes.draw do
     resources :items, expect: %i[show], module: :categories
   end
 
+  resource :dashboards, only: %i[show]
+
   namespace :admin do
     resources :categories do
       resources :columns, except: %i[index show], module: :categories
     end
   end
 
-  root 'admin/categories#index'
+  root 'dashboards#show'
 end

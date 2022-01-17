@@ -43,10 +43,6 @@ module Admin
 
     private
 
-    def set_columns
-      @columns = @category.columns
-    end
-
     def set_category
       @category = Category.find(params[:id])
     end

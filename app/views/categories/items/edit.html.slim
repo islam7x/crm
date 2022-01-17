@@ -3,11 +3,11 @@ h1 Изменить товар
   = simple_form_for @item, url: category_item_path(@category) do |f|
     = f.input :quantity, label: 'Количество:', input_html: { class: 'form-control' }
     = f.input :weight, label: 'Вес:', input_html: { class: 'form-control' }
-    = f.input :datetime_of_create,
+    = f.input :date_of_create,
               wrappers: :horizontal_select_date,
-              as: :datetime,
+              as: :date,
               label: 'Дата:',
-              input_html: { value: Time.current.strftime('%d/%m/%Y %H:%M'),
+              input_html: { value: Date.current.strftime('%d/%m/%Y %H:%M'),
                             class: 'form-control' }
     = f.input :column_id,
               as: :select,

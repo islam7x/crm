@@ -7,7 +7,8 @@ module Categories
     before_action :set_columns, only: %i[index new edit]
 
     def index
-      @items = @category.items
+      @items = ::Categories::Items::ListService.call(category: @category).result
+      @columns_count = @columns.size
     end
 
     def new
@@ -15,7 +16,7 @@ module Categories
     end
 
     def create
-      @item = @category.items.new(item_params)
+      @item = Item.new(item_params.merge(category_id: @category.id))
       if @item.save
         redirect_to category_items_path(@category)
       else
@@ -44,12 +45,8 @@ module Categories
       @item = Item.find(params[:id])
     end
 
-    def set_columns
-      @columns = @category.columns
-    end
-
     def item_params
-      params.require(:item).permit(:quantity, :weight, :column_id, :datetime_of_create)
+      params.require(:item).permit(:quantity, :weight, :column_id, :date_of_create)
     end
 
     def set_category

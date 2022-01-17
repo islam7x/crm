@@ -1,21 +1,18 @@
-h1 Товары
-- if @items.blank?
+.mt-2.mb-2.float-end
+  = link_to 'Добавить Товар', new_category_item_path(@category), class: 'btn btn-primary'
+
+- if @columns.blank?
   p Нет товаров
 - else
-  table.table.table-striped
-    head
-      th ID
-      th Количество
-      th Вес
-      th Дата создания
-      th Столбец
-      th
-    body
-      - @items.each do |item|
-        tr
-          td = item.id
-          td = item.quantity
-          td = item.weight
-          td = item.datetime_of_create.try(:strftime, '%d/%m/%Y %H:%M')
-          td = item.column_id
-          td = link_to 'Изменить', edit_category_item_path(item.category_id, item), class: 'btn btn-primary'
+  table.table.table-hover.table-bordered.table-responsive
+    thead
+      tr.text-center
+        - @columns.each do |column|
+          th = column.name
+        th Дата
+    tbody
+      - @items.each do |date, item_attrs|
+        tr.text-center
+          - @columns_count.times do |i|
+            td = item_attrs[i]&.decorate&.display_value
+          td = date
