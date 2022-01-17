@@ -1,13 +1,18 @@
-h1 = @category.name
+.mt-2.mb-2.float-end
+  = link_to 'Добавить Товар', new_category_item_path(@category), class: 'btn btn-primary'
+
 - if @columns.blank?
   p Нет товаров
 - else
-  table.table.table-striped
+  table.table.table-hover.table-bordered.table-responsive
     thead
-      - @columns.each do |column|
-        th colspan='2' = column.name
+      tr.text-center
+        - @columns.each do |column|
+          th = column.name
+        th Дата
     tbody
-      - @items.each do |item|
-        tr
-          td Вес: #{item.weight}
-          td Кол-во: #{item.quantity}
+      - @items.each do |date, item_attrs|
+        tr.text-center
+          - item_attrs.each do |item|
+            td = item.decorate.display_value
+          td = date
