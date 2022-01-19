@@ -4,15 +4,27 @@
 - if @columns.blank?
   p Нет товаров
 - else
-  table.table.table-hover.table-bordered.table-responsive
+  table.items-table.table.table-hover.table-bordered.table-responsive
     thead
       tr.text-center
         - @columns.each do |column|
-          th = column.name
+          th colspan='2' = column.name
         th Дата
     tbody
       - @items.each do |date, item_attrs|
         tr.text-center
           - @columns_count.times do |i|
-            td = item_attrs[i]&.decorate&.display_value
-          td = date
+            - if item_attrs[i]&.quantity.blank? && item_attrs[i]&.weight.blank?
+              td.left-td.right-td colspan='2'
+            - else
+              = item_attrs[i]&.decorate&.display_td
+          td.right-td = date
+    tfoot
+      tr.text-center
+        - @columns.each do |column|
+          - if column.sum_quantity.blank? || column.sum_weight.blank?
+            th.left-td.right-td colspan='2' = column.sum_quantity.presence || column.sum_weight
+          - else
+            th.left-td = column.sum_quantity
+            th.right-td = column.sum_weight
+        th.right-td

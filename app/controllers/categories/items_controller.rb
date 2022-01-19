@@ -8,7 +8,7 @@ module Categories
 
     def index
       @items = ::Categories::Items::ListService.call(category: @category).result
-      @columns_count = @columns.size
+      @columns_count = @columns.length
     end
 
     def new
@@ -41,16 +41,20 @@ module Categories
 
     private
 
-    def set_item
-      @item = Item.find(params[:id])
-    end
-
     def item_params
       params.require(:item).permit(:quantity, :weight, :column_id, :date_of_create)
     end
 
+    def set_item
+      @item = Item.find(params[:id])
+    end
+
     def set_category
       @category = Category.find(params[:category_id])
+    end
+
+    def set_columns
+      @columns = ::Categories::Columns::ListService.call(category: @category).result
     end
   end
 end

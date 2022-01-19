@@ -43,12 +43,16 @@ module Admin
 
     private
 
+    def category_params
+      params.require(:category).permit(:name)
+    end
+
     def set_category
       @category = Category.find(params[:id])
     end
 
-    def category_params
-      params.require(:category).permit(:name)
+    def set_columns
+      @columns = ::Columns::OrderedByPositionSpecification.to_scope
     end
   end
 end
