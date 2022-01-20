@@ -4,11 +4,11 @@ module Categories
   class ItemsController < ApplicationController
     before_action :set_item, only: %i[edit destroy update]
     before_action :set_category, only: %i[update index edit destroy create new]
-    before_action :set_columns, only: %i[index new edit]
+    before_action :set_columns, only: %i[new edit create update]
 
     def index
+      @columns = ::Categories::Columns::ListService.call(category: @category).result
       @items = ::Categories::Items::ListService.call(category: @category).result
-      @columns_count = @columns.length
     end
 
     def new
@@ -54,7 +54,7 @@ module Categories
     end
 
     def set_columns
-      @columns = ::Categories::Columns::ListService.call(category: @category).result
+      @columns = @category.columns.order_by_position
     end
   end
 end

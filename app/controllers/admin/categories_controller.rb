@@ -52,7 +52,7 @@ module Admin
     end
 
     def set_columns
-      @columns = ::Columns::OrderedByPositionSpecification.to_scope
+      @columns = @category.columns.order_by_position
     end
   end
 end

@@ -13,7 +13,7 @@
     tbody
       - @items.each do |date, item_attrs|
         tr.text-center
-          - @columns_count.times do |i|
+          - @columns.each_with_index do |_, i|
             - if item_attrs[i]&.quantity.blank? && item_attrs[i]&.weight.blank?
               td.left-td.right-td colspan='2'
             - else

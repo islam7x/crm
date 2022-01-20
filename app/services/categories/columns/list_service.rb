@@ -7,11 +7,11 @@ module Categories
 
       def process
         @result =
-          ::Columns::OrderedByPositionSpecification
-            .to_scope
-            .where(category_id: category.id)
-            .joins(:items)
+          category
+            .columns
             .select('columns.name, sum(items.quantity) as sum_quantity, sum(items.weight) as sum_weight')
+            .order_by_position
+            .left_joins(:items)
             .group(:name, :position)
       end
     end
