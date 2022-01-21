@@ -4,11 +4,11 @@
       .row.mb-2
         .col-4
           .form-floating
-            input#from.form-control name='from' type='date' value=params[:from]
+            input#from.form-control name='from' type='date' value=Date.current.beginning_of_month
             label От:
         .col-4
           .form-floating
-            input#to.form-control name='to' type='date' value=params[:to]
+            input#to.form-control name='to' type='date' value=Date.current.end_of_month
             label До:
         .col-4
           input type='submit' value='Поиск' class='btn btn-primary'
