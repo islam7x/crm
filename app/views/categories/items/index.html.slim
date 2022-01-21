@@ -1,5 +1,20 @@
-.mt-2.mb-2.float-end
-  = link_to 'Добавить Товар', new_category_item_path(@category), class: 'btn btn-primary'
+.row.mt-2
+  .col-6
+    form action=category_items_path(@category) method='get'
+      .row.mb-2
+        .col-4
+          .form-floating
+            input#from.form-control name='from' type='date' value=params[:from]
+            label От:
+        .col-4
+          .form-floating
+            input#to.form-control name='to' type='date' value=params[:to]
+            label До:
+        .col-4
+          input type='submit' value='Поиск' class='btn btn-primary'
+  .col-6
+    .mt-2.mb-2.float-end
+      = link_to 'Добавить Товар', new_category_item_path(@category), class: 'btn btn-primary'
 
 - if @columns.blank?
   p Нет товаров
