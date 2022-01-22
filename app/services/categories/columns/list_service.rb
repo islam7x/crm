@@ -9,6 +9,7 @@ module Categories
         @result =
           category
             .columns
+            .not_deleted
             .select('columns.name, sum(items.quantity) as sum_quantity, sum(items.weight) as sum_weight')
             .where('items.date_of_create >= :from AND items.date_of_create <= :to',
                    from: from.presence || Date.current.beginning_of_month,
