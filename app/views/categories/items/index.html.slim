@@ -1,45 +1,44 @@
-.row.mt-2
-  .col-6
+.row.mt-lg-2.mt-md-4
+  .col-lg-6
     form action=category_items_path(@category) method='get'
       .row.mb-2
-        .col-4
+        .col-lg-4
           .form-floating
-            input#from.form-control name='from' type='date' value="#{params[:from].presence || Date.current.beginning_of_month}"
+            input#from.form-control[name='from'
+                                    type='date'
+                                    value="#{params[:from].presence || Date.current.beginning_of_month}"]
             label От:
-        .col-4
+        .col-lg-4
           .form-floating
             input#to.form-control name='to' type='date' value="#{params[:to].presence || Date.current.end_of_month}"
             label До:
-        .col-4
-          input type='submit' value='Поиск' class='btn btn-primary'
-  .col-6
-    .mt-2.mb-2.float-end
+        .col-lg-4
+          input type='submit' value='Поиск' class='btn btn-primary mt-2'
+  .col-lg-6
+    .mt-2.mb-2.float-lg-end
       = link_to 'Добавить Товар', new_category_item_path(@category), class: 'btn btn-primary'
 
-- if @columns.blank?
-  p Нет товаров
-- else
-  table.items-table.table.table-hover.table-bordered.table-responsive
-    thead
+table.items-table.table.table-hover.table-bordered.table-responsive
+  thead
+    tr.text-center
+      - @columns.each do |column|
+        th colspan='2' = column.name
+      th Дата
+  tbody
+    - @items.each do |date, item_attrs|
       tr.text-center
-        - @columns.each do |column|
-          th colspan='2' = column.name
-        th Дата
-    tbody
-      - @items.each do |date, item_attrs|
-        tr.text-center
-          - @columns.each_with_index do |_, i|
-            - if item_attrs[i]&.quantity.blank? && item_attrs[i]&.weight.blank?
-              td.left-td.right-td colspan='2'
-            - else
-              = item_attrs[i]&.decorate&.display_td
-          td.right-td = date
-    tfoot
-      tr.text-center
-        - @columns.each do |column|
-          - if column.sum_quantity.blank? || column.sum_weight.blank?
-            th.left-td.right-td colspan='2' = column.sum_quantity.presence || column.sum_weight
+        - item_attrs.each do |item|
+          - if item.blank?
+            td.left-td.right-td colspan='2'
           - else
-            th.left-td = column.sum_quantity
-            th.right-td = column.sum_weight
-        th.right-td
+            = item.decorate.display_td
+        td.right-td = date
+  tfoot
+    tr.text-center
+      - @columns.each do |column|
+        - if column.sum_quantity.blank? || column.sum_weight.blank?
+          th.left-td.right-td colspan='2' = column.sum_quantity.presence || column.sum_weight
+        - else
+          th.left-td = column.sum_quantity
+          th.right-td = column.sum_weight
+      th.right-td

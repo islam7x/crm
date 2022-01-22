@@ -9,6 +9,7 @@ class Column < ApplicationRecord
 
   before_update :check_bottom_position
 
+  scope :not_deleted, -> { where(deleted_at: nil) }
   scope :order_by_position, -> { order(position: :asc) }
 
   private

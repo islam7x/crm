@@ -7,14 +7,16 @@ module Categories
     before_action :set_columns, only: %i[new edit create update]
 
     def index
-      @columns = ::Categories::Columns::ListService.call(category: @category).result
-      @items = ::Categories::Items::ListService
-        .call(
-          category: @category,
-          from: params[:from],
-          to: params[:to]
-        )
-        .result
+      @columns = ::Categories::Columns::ListService.call(
+        to: params[:to],
+        from: params[:from],
+        category: @category
+      ).result
+      @items = ::Categories::Items::ListService.call(
+        to: params[:to],
+        from: params[:from],
+        category: @category
+      ).result
     end
 
     def new
