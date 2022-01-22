@@ -8,7 +8,13 @@ module Categories
 
     def index
       @columns = ::Categories::Columns::ListService.call(category: @category).result
-      @items = ::Categories::Items::ListService.call(category: @category).result
+      @items = ::Categories::Items::ListService
+        .call(
+          category: @category,
+          from: params[:from],
+          to: params[:to]
+        )
+        .result
     end
 
     def new
