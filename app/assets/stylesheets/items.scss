@@ -11,4 +11,56 @@
   .right-td {
     border-right-color: #000000;
   }
+  .middle-icon-2 {
+    position: absolute;
+    top: 4px;
+    right: 73px;
+  }
+  .middle-icon-1 {
+    position: absolute;
+    top: 4px;
+    left: 73px;
+  }
+  .fa-trash-alt {
+    color: red;
+  }
+  .actions {
+    position: relative;
+    padding: 0;
+    vertical-align: middle;
+
+    div {
+      position: absolute;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.7);
+      width: 100%;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.26s ease;
+
+      .center-icon-2 {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        right: 20px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .center-icon-1 {
+        position: absolute;
+        top: 3px;
+        left: 20px;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    &:hover {
+      div {
+        height: 100%;
+        transform: scaleY(1);
+      }
+    }
+  }
 }

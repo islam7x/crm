@@ -253,3 +253,9 @@ ru:
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
     pm: вечера
+
+  controllers:
+    categories:
+      items:
+        danger_messages: 'Ошибка! Товар с такой датой уже существует, поменяйте дату или столбец. <a href="%{href}" class="alert-link">Редактировать</a>'
+
