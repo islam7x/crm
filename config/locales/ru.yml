@@ -258,4 +258,3 @@ ru:
     categories:
       items:
         danger_messages: 'Ошибка! Товар с такой датой уже существует, поменяйте дату или столбец. <a href="%{href}" class="alert-link">Редактировать</a>'
-
