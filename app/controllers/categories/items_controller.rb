@@ -25,18 +25,16 @@ module Categories
 
     def create
       @item = Item.find_or_initialize_by(date_of_create: item_params[:date_of_create],
-                                         column_id: item_params[:column_id])
+                                         column_id: item_params[:column_id],
+                                         category_id: @category.id)
+      @item.assign_attributes(item_params)
       if @item.new_record?
-        @item.assign_attributes(item_params.merge(category_id: @category.id))
-        if @item.valid?
-          @item.save
-          redirect_to category_items_path(@category)
-        else
-          flash.now[:danger] = 'Заполните поля'
-          render 'new'
-        end
+        @item.save
+        redirect_to category_items_path(@category)
       else
-        flash.now[:danger] = I18n.t("controllers.categories.items.danger_messages", href:  edit_category_item_path(@category, @item)).html_safe
+        flash.now[:danger] =
+          I18n.t('controllers.categories.items.danger_messages',
+                 href: edit_category_item_path(@category, @item)).html_safe
         render 'new'
       end
     end
