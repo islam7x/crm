@@ -8,9 +8,8 @@ class ItemDecorator < ApplicationDecorator
       return h.content_tag(:td, class: 'left-td right-td actions', colspan: '2') { div_block }
     end
 
-    h.content_tag(:td, quantity, class: 'left-td actions') + h.content_tag(:td, weight, class: 'right-td actions') do
-                                                               div_block
-                                                             end
+    h.content_tag(:td, quantity, class: 'left-td actions') +
+      h.content_tag(:td, weight, class: 'right-td actions') { div_block }
   end
 
   private

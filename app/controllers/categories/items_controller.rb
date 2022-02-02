@@ -28,10 +28,13 @@ module Categories
                                          column_id: item_params[:column_id],
                                          category_id: @category.id)
       @item.assign_attributes(item_params)
-      if @item.new_record?
-        @item.save
+
+      if @item.new_record? && @item.save
         redirect_to category_items_path(@category)
       else
+        render 'new'
+      end
+      if @item.persisted?
         flash.now[:danger] =
           I18n.t('controllers.categories.items.danger_messages',
                  href: edit_category_item_path(@category, @item)).html_safe
