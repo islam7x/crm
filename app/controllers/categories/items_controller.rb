@@ -5,6 +5,7 @@ module Categories
     before_action :set_item, only: %i[edit destroy update]
     before_action :set_category, only: %i[update index edit destroy create new]
     before_action :set_columns, only: %i[new edit create update]
+    before_action :item_exists?, only: %i[update]
 
     def index
       @columns = ::Categories::Columns::ListService.call(
@@ -28,16 +29,15 @@ module Categories
                                          column_id: item_params[:column_id],
                                          category_id: @category.id)
       @item.assign_attributes(item_params)
-
-      if @item.new_record? && @item.save
-        redirect_to category_items_path(@category)
-      else
-        render 'new'
-      end
       if @item.persisted?
         flash.now[:danger] =
           I18n.t('controllers.categories.items.danger_messages',
                  href: edit_category_item_path(@category, @item)).html_safe
+      end
+
+      if @item.new_record? && @item.save
+        redirect_to category_items_path(@category)
+      else
         render 'new'
       end
     end
@@ -45,7 +45,12 @@ module Categories
     def edit; end
 
     def update
-      if @item.update(item_params)
+      if item_exists?
+        flash.now[:danger] =
+          I18n.t('controllers.categories.items.danger_messages',
+                 href: edit_category_item_path(@category, @item)).html_safe
+      end
+      if !item_exists? && @item.update(item_params)
         redirect_to category_items_path(@category)
       else
         render 'edit'
@@ -58,6 +63,12 @@ module Categories
     end
 
     private
+
+    def item_exists?
+      Item.where.not(id: @item.id).exists?(date_of_create: item_params[:date_of_create],
+                                           column_id: item_params[:column_id],
+                                           category_id: @category.id)
+    end
 
     def item_params
       params.require(:item).permit(:quantity, :weight, :column_id, :date_of_create)
