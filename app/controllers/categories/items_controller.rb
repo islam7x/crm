@@ -5,7 +5,6 @@ module Categories
     before_action :set_item, only: %i[edit destroy update]
     before_action :set_category, only: %i[update index edit destroy create new]
     before_action :set_columns, only: %i[new edit create update]
-    before_action :item_exists?, only: %i[update]
 
     def index
       @columns = ::Categories::Columns::ListService.call(
