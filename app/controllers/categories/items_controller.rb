@@ -45,12 +45,13 @@ module Categories
     def edit; end
 
     def update
+      @item.assign_attributes(item_params)
       if item_exists?
         flash.now[:danger] =
           I18n.t('controllers.categories.items.danger_messages',
                  href: edit_category_item_path(@category, @item)).html_safe
       end
-      if !item_exists? && @item.update(item_params)
+      if !item_exists?
         redirect_to category_items_path(@category)
       else
         render 'edit'
@@ -58,8 +59,10 @@ module Categories
     end
 
     def destroy
-      @item.destroy
-      redirect_to category_items_path(@category)
+      if current_user.admin?
+        @item.destroy
+        redirect_to category_items_path(@category)
+      end
     end
 
     private

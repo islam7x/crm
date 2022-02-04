@@ -6,11 +6,11 @@
           .form-floating
             input#from.form-control[name='from'
                                     type='date'
-                                    value="#{params[:from].presence || Date.current.beginning_of_month}"]
+                                    value='#{params[:from].presence || Date.current.beginning_of_month}']
             label От:
         .col-lg-4
           .form-floating
-            input#to.form-control name='to' type='date' value="#{params[:to].presence || Date.current.end_of_month}"
+            input#to.form-control name='to' type='date' value='#{params[:to].presence || Date.current.end_of_month}'
             label До:
         .col-lg-4
           input type='submit' value='Поиск' class='btn btn-primary mt-2'
