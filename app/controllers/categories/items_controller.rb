@@ -50,7 +50,7 @@ module Categories
           I18n.t('controllers.categories.items.danger_messages',
                  href: edit_category_item_path(@category, @item)).html_safe
       end
-      if !item_exists?
+      if !item_exists? && @item.save
         redirect_to category_items_path(@category)
       else
         render 'edit'
