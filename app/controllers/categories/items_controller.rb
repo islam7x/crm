@@ -58,10 +58,8 @@ module Categories
     end
 
     def destroy
-      if current_user.admin?
-        @item.destroy
-        redirect_to category_items_path(@category)
-      end
+      @item.destroy if current_user.admin?
+      redirect_to category_items_path(@category)
     end
 
     private
