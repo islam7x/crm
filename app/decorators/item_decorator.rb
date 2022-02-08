@@ -5,17 +5,20 @@ class ItemDecorator < ApplicationDecorator
 
   def display_td
     if weight.blank? || quantity.blank?
-      return h.content_tag(:td, class: 'left-td right-td actions', colspan: '2') { div_block }
+      return h.content_tag(:td, class: 'left-td right-td actions',
+                                colspan: '2') do
+               div_block(quantity.presence || weight)
+             end
     end
 
-    h.content_tag(:td, quantity, class: 'left-td actions') { div_block } +
-      h.content_tag(:td, weight, class: 'right-td actions') { div_block }
+    h.content_tag(:td, quantity, class: 'left-td actions') { div_block(quantity) } +
+      h.content_tag(:td, weight, class: 'right-td actions') { div_block(weight) }
   end
 
   private
 
-  def div_block
-    h.concat(quantity.presence && weight)
+  def div_block(value)
+    h.concat(value)
 
     h.concat(
       h.content_tag(:div) do
