@@ -5,8 +5,7 @@ class ItemDecorator < ApplicationDecorator
 
   def display_td
     if weight.blank? || quantity.blank?
-      return h.content_tag(:td, class: 'left-td right-td actions',
-                                colspan: '2') do
+      return h.content_tag(:td, class: 'left-td right-td actions', colspan: '2') do
                div_block(quantity.presence || weight)
              end
     end
