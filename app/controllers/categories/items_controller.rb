@@ -24,8 +24,17 @@ module Categories
     end
 
     def create
-      @item = Item.new(item_params.merge(category_id: @category.id))
-      if @item.save
+      @item = Item.find_or_initialize_by(date_of_create: item_params[:date_of_create],
+                                         column_id: item_params[:column_id],
+                                         category_id: @category.id)
+      @item.assign_attributes(item_params)
+      if @item.persisted?
+        flash.now[:danger] =
+          I18n.t('controllers.categories.items.danger_messages',
+                 href: edit_category_item_path(@category, @item)).html_safe
+      end
+
+      if @item.new_record? && @item.save
         redirect_to category_items_path(@category)
       else
         render 'new'
@@ -35,7 +44,13 @@ module Categories
     def edit; end
 
     def update
-      if @item.update(item_params)
+      @item.assign_attributes(item_params)
+      if item_exists?
+        flash.now[:danger] =
+          I18n.t('controllers.categories.items.danger_messages',
+                 href: edit_category_item_path(@category, @item)).html_safe
+      end
+      if !item_exists? && @item.save
         redirect_to category_items_path(@category)
       else
         render 'edit'
@@ -43,11 +58,17 @@ module Categories
     end
 
     def destroy
-      @item.destroy
+      @item.destroy if current_user.admin?
       redirect_to category_items_path(@category)
     end
 
     private
+
+    def item_exists?
+      Item.where.not(id: @item.id).exists?(date_of_create: item_params[:date_of_create],
+                                           column_id: item_params[:column_id],
+                                           category_id: @category.id)
+    end
 
     def item_params
       params.require(:item).permit(:quantity, :weight, :column_id, :date_of_create)

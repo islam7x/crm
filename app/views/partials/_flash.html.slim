@@ -1,0 +1,9 @@
+- flash.each do |name, value|
+  .row
+    .col-12
+      .alert.alert-dismissible class="alert-#{name}" role='alert'
+        = value
+        button[type='button'
+               class='btn-close'
+               data-bs-dismiss='alert'
+               aria-label='Close']
