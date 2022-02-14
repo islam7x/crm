@@ -25,7 +25,7 @@ table.items-table.table.table-hover.table-bordered.table-responsive
         th colspan='2' = column.name
       th Дата
   tbody
-    - @items.each do |date, item_attrs|
+    - @service.grouped_items.each do |date, item_attrs|
       tr.text-center
         - item_attrs.each do |item|
           - if item.blank?
@@ -39,6 +39,10 @@ table.items-table.table.table-hover.table-bordered.table-responsive
         - if column.sum_quantity.blank? || column.sum_weight.blank?
           th.left-td.right-td colspan='2' = column.sum_quantity.presence || column.sum_weight
         - else
-          th.left-td = column.sum_quantity
-          th.right-td = column.sum_weight
+          th.left-td = column.sum_quantity.round(2)
+          th.right-td = column.sum_weight.round(2)
       th.right-td
+= paginate(@service.items_paginate,
+           theme: 'bootstrap-5',
+           pagination_class: 'pagination-sm flex-wrap justify-content-center',
+           nav_class: 'd-inline-block')
