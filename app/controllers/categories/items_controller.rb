@@ -13,10 +13,11 @@ module Categories
         category: @category
       ).result
       @items = ::Categories::Items::ListService.call(
+        page: params[:page],
         to: params[:to],
         from: params[:from],
         category: @category
-      ).result
+      )
     end
 
     def new
