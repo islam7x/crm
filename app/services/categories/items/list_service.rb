@@ -3,7 +3,8 @@
 module Categories
   module Items
     class ListService < ::ApplicationService
-      attr_accessor :to, :from, :category, :page, :items_paginate, :grouped_items
+      attr_reader :items_paginate, :grouped_items
+      attr_accessor :to, :from, :category, :page
 
       def process
         @grouped_items = group_items
