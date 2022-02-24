@@ -31,7 +31,6 @@ class ItemDecorator < ApplicationDecorator
             h.link_to(
               h.category_item_path(category_id, id),
               method: :delete,
-              data: { confirm: 'Вы уверены?' }
             ) { h.content_tag(:i, class: 'items-icon-trash fas fa-trash-alt') {} }
           )
         end

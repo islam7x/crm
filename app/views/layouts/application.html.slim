@@ -36,3 +36,7 @@ html
     .container
       = render 'partials/flash'
       = yield
+      = yield :modals if content_for? :modals
+      = render partial: 'partials/message_modal'
+
+
