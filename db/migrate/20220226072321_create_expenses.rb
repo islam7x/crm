@@ -3,7 +3,7 @@
 class CreateExpenses < ActiveRecord::Migration[6.1]
   def change
     create_table :expenses do |t|
-      t.integer :parish_id
+      t.references :parish
       t.integer :killed
       t.integer :killed_weight
       t.integer :sold_count

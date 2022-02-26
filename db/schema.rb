@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2022_02_26_072321) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.integer "parish_id"
+    t.bigint "parish_id"
     t.integer "killed"
     t.integer "killed_weight"
     t.integer "sold_count"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2022_02_26_072321) do
     t.date "date_of_create"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["parish_id"], name: "index_expenses_on_parish_id"
   end
 
   create_table "items", force: :cascade do |t|
