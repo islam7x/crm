@@ -1,4 +1,10 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
+  def body_controller
+    params[:controller].split('/')[0]
+  end
+
   def modal(type, options = {}, &block)
     options = { size: options } if options.is_a? String
     defaults = { type: type, size: 'md', body: false, arrows: false }

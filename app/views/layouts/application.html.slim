@@ -8,7 +8,7 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body
+  body data-controller=body_controller data-page=(controller_name.camelize + action_name.camelize)
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container
         a.navbar-brand href='/' CRM
@@ -36,5 +36,4 @@ html
     .container
       = render 'partials/flash'
       = yield
-      = yield :modals if content_for? :modals
-      = render partial: 'partials/message_modal'
+    = yield :modals if content_for?(:modals)

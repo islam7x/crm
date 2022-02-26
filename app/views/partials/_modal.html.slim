@@ -1,13 +1,14 @@
-.modal.fade [id="#{type}-modal"
-             aria-hidden=true
-             role='dialog'
-             tabindex=-1]
-  .modal-dialog  class="modal-#{size}"
-    - if body
-      .modal-content.modal-body
-        .text-right
-          a.cursor  data-dismiss='modal' ×
-        = captured
-    - else
-      .modal-content
+.modal.fade[id="#{type}-modal"
+            aria-hidden=true
+            role='dialog'
+            tabindex=-1]
+  .modal-dialog class="modal-#{size}"
+    .modal-content
+      .modal-header
+        h5 class='modal-title'
+        button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'
+      - if body
+        .modal-body
+          = captured
+      - else
         = captured

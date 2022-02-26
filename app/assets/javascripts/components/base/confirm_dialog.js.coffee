@@ -1,6 +1,5 @@
 class CRM.ConfirmDialog
   @init: ->
-    console.log(11111)
     @setElements()
     @prepareMessageModal()
 
@@ -13,7 +12,7 @@ class CRM.ConfirmDialog
 
     if confirm
       @messageModal.find('.js-confirm').show()
-      dataDismiss.text(dataDismiss.data('btn-text'))
+      dataDismiss.text(dataDismiss.data('btn-text')) if dataDismiss.data('btn-text')
     else
       @messageModal.find('.js-confirm').hide()
       dataDismiss.text('OK')

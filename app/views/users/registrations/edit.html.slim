@@ -26,3 +26,5 @@ h3 Аннулировать мою учетную запись
 p
   | Unhappy? #{link_to 'Аннулировать мою учетную запись', registration_path(resource_name), data: { confirm: 'Вы уверены?' }, method: :delete}
 = link_to 'Назад', :back
+
+= render partial: 'partials/message_modal'

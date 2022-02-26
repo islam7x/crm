@@ -24,14 +24,15 @@ class ItemDecorator < ApplicationDecorator
         h.concat(
           h.link_to(
             h.edit_category_item_path(category_id, id)
-          ) { h.content_tag(:i, class: 'items-icon-edit fas fa-edit') {} }
+          ) { h.content_tag(:i, '', class: 'items-icon-edit fas fa-edit') }
         )
         if h.current_user.admin?
           h.concat(
             h.link_to(
               h.category_item_path(category_id, id),
               method: :delete,
-            ) { h.content_tag(:i, class: 'items-icon-trash fas fa-trash-alt') {} }
+              data: { confirm: 'Вы уверены?' }
+            ) { h.content_tag(:i, '', class: 'items-icon-trash fas fa-trash-alt') }
           )
         end
       end
