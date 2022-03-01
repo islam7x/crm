@@ -1,0 +1,32 @@
+.row.mt-lg-2.mt-md-4
+  .col-lg-12
+    .mt-2.mb-2.float-lg-end
+      = link_to 'Создать расход', new_parish_expense_path, class: 'btn btn-primary'
+
+h3 = @parish.name
+h5 Дата: #{ @parish.date_of_create }
+h5 Кол-во: #{ @parish.quantity }
+h5 Остаток: #{ @parish.remainder }
+
+- if @expenses.blank?
+  p Нет расходов
+- else
+  table.expenses_icons.table.table-hover.table-bordered.table-responsive.caption-top
+    caption Расходы
+    thead
+      tr.text-center
+        th Забой
+        th Вес забоя
+        th Продано живых (ШТ)
+        th Продано живых (КГ)
+        th Дата
+    tbody
+      - @expenses.each do |expense|
+        tr.text-center
+          td = expense.killed
+          td = expense.killed_weight
+          td = expense.sold_count
+          td = expense.sold_weight
+          = expense.decorate.display_td
+
+= render partial: 'partials/message_modal'

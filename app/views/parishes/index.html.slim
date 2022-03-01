@@ -1,0 +1,41 @@
+.row.mt-lg-2.mt-md-4
+  .col-lg-6
+    .row.mb-6
+      .col-lg-4
+        .mt-2
+          select#parish.form-select name='parish'
+            = @parishes.each do |parish|
+              option value="#{parish.id}" = parish.name
+      .col-lg-4
+        input#search_parish type='submit' value='Показать' class='btn btn-primary mt-2'
+
+  .col-lg-6
+    .mt-2.mb-2.float-lg-end
+      = link_to 'Создать приход', new_parish_path, class: 'btn btn-primary'
+
+- if @parishes.blank?
+  p Нет приходов
+- else
+  table.table.table-hover.table-responsive.caption-top
+    caption Приход
+    thead
+      tr.text-center
+        th Имя
+        th Кол-во
+        th Дата
+        th
+    tbody
+      - @parishes.each do |parish|
+        tr.text-center
+          td = parish.name
+          td = parish.quantity
+          td = parish.date_of_create
+          td
+            = link_to 'Редактировать', edit_parish_path(parish), class: 'btn btn-primary me-2'
+            = link_to 'Удалить',
+                      parish_path(parish),
+                      class: 'btn btn-danger',
+                      method: :delete,
+                      data: { confirm: 'Вы уверены?' }
+
+= render partial: 'partials/message_modal'

@@ -7,12 +7,14 @@
 #= require_self
 #= require cable.js
 #= require_tree ./components/base
+#= require_tree ./components/parishes
 
 window.CRM = {}
 
 class CRM.Application
   @init: ->
     CRM.ConfirmDialog.init()
+    CRM.Parishes.init()
 
 ready = ->
   data = $('body').data()

@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :items, expect: %i[show], module: :categories
   end
 
+  resources :parishes do
+    resources :expenses, expect: %i[show], module: :parishes
+  end
+
   resource :dashboards, only: %i[show]
 
   namespace :admin do
