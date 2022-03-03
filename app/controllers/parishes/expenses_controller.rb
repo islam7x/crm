@@ -4,9 +4,10 @@ module Parishes
   class ExpensesController < ApplicationController
 
     before_action :set_expense, only: %i[update edit destroy]
-    before_action :set_parish, only: %i[index new create edit update destroy]
+    before_action :set_parish
 
     def index
+      @parishes = Parish.all
       @expenses = @parish.expenses
     end
 
@@ -15,9 +16,9 @@ module Parishes
     end
 
     def create
-      @expense = @parish.expenses.new(expense_params)
+      @expense = Expense.new(expense_params)
       if @expense.save
-        @parish.update(remainder: update_remainder)
+        update_remainder
         redirect_to parish_expenses_path(@parish)
       else
         render 'new'
@@ -28,7 +29,7 @@ module Parishes
 
     def update
       if @expense.update(expense_params)
-        @parish.update(remainder: update_remainder)
+        update_remainder
         redirect_to parish_expenses_path(@parish)
       else
         render 'edit'
@@ -36,10 +37,8 @@ module Parishes
     end
 
     def destroy
-      if @expense.destroy
-        @parish.update(remainder: update_remainder)
-        redirect_to parish_expenses_path(@parish)
-      end
+      update_remainder if @expense.destroy
+      redirect_to parish_expenses_path(@parish)
     end
 
     private
@@ -49,7 +48,7 @@ module Parishes
     end
 
     def update_remainder
-      @parish.quantity - (@expense.killed + @expense.sold_count)
+      @parish.update(remainder: @parish.quantity - (@expense.killed + @expense.sold_count))
     end
 
     def set_expense

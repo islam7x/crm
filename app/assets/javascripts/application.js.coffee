@@ -14,7 +14,6 @@ window.CRM = {}
 class CRM.Application
   @init: ->
     CRM.ConfirmDialog.init()
-    CRM.Parishes.init()
 
 ready = ->
   data = $('body').data()

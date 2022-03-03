@@ -2,8 +2,8 @@ h1 Создание расхода
 .col-md-4.col-md-offset-4
   = simple_form_for @expense, url: parish_expenses_path(@parish) do |f|
 
-    = f.input :killed, label:  'Убито:', input_html: { class: 'form-control' }
-    = f.input :killed_weight, label: 'Вес убитого:', input_html: { class: 'form-control' }
+    = f.input :killed, label:  'Забой:', input_html: { class: 'form-control' }
+    = f.input :killed_weight, label: 'Вес забоя:', input_html: { class: 'form-control' }
     = f.input :sold_count, label: 'Кол-во проданного:', input_html: { class: 'form-control' }
     = f.input :sold_weight, label: 'Вес проданного:', input_html: { class: 'form-control' }
     label Дата:
@@ -15,4 +15,4 @@ h1 Создание расхода
             input_html: { class: 'form-control' }
 
     .mt-2
-      = f.submit 'Создать расход', class: 'btn btn-success'
+      = f.submit 'Создать', class: 'btn btn-success'

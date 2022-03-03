@@ -1,10 +1,12 @@
-class CRM.Parishes
+class CRM.ParishesIndex
   @init: ->
     @bind()
 
   @bind: ->
-    $('#search_parish').on 'click', @redirect
+    $('#search_parish').on 'click', redirectTo
 
-  @redirect: ->
+  redirectTo = ->
     value = $('#parish').val()
     window.location.href = "/parishes/#{value}/expenses";
+
+class CRM.ExpensesIndex extends CRM.ParishesIndex

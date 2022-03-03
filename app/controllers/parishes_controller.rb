@@ -5,7 +5,7 @@ class ParishesController < ApplicationController
   before_action :set_parish, only: %i[edit update destroy]
 
   def index
-    @parishes = Parish.all
+    @parishes = Parish.all.order('date_of_create DESC')
   end
 
   def new
@@ -13,7 +13,7 @@ class ParishesController < ApplicationController
   end
 
   def create
-    @parish = Parish.new(parish_params)
+    @parish = Parish.new(parish_params.merge(remainder: parish_params[:quantity]))
     if @parish.save
       redirect_to parishes_path
     else
@@ -39,7 +39,7 @@ class ParishesController < ApplicationController
   private
 
   def parish_params
-    params.require(:parish).permit(:name, :quantity, :date_of_create)
+    params.require(:parish).permit(:name, :quantity, :remainder, :date_of_create)
   end
 
   def set_parish
