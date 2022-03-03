@@ -13,7 +13,7 @@ class ExpenseDecorator < ApplicationDecorator
     h.concat(date_of_create)
 
     h.concat(
-      h.content_tag(:div, class: 'actions') do
+      h.content_tag(:div) do
         h.concat(
           h.link_to(
             h.edit_parish_expense_path(parish_id, id)
