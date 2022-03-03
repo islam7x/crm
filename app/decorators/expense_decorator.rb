@@ -13,11 +13,11 @@ class ExpenseDecorator < ApplicationDecorator
     h.concat(date_of_create)
 
     h.concat(
-      h.content_tag(:div) do
+      h.content_tag(:div, class: 'actions') do
         h.concat(
           h.link_to(
             h.edit_parish_expense_path(parish_id, id)
-          ) { h.content_tag(:i, '', class: 'expenses-icon-edit fas fa-edit') }
+          ) { h.content_tag(:i, '', class: 'icon-edit fas fa-edit') }
         )
 
         h.concat(
@@ -25,7 +25,7 @@ class ExpenseDecorator < ApplicationDecorator
             h.parish_expense_path(parish_id, id),
             method: :delete,
             data: { confirm: 'Вы уверены?' }
-          ) { h.content_tag(:i, '', class: 'expenses-icon-trash fas fa-trash-alt') }
+          ) { h.content_tag(:i, '', class: 'icon-trash fas fa-trash-alt') }
         )
       end
     )

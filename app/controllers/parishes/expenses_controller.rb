@@ -2,7 +2,6 @@
 
 module Parishes
   class ExpensesController < ApplicationController
-
     before_action :set_expense, only: %i[update edit destroy]
     before_action :set_parish
 

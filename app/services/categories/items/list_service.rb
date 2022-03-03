@@ -44,7 +44,7 @@ module Categories
       end
 
       def per_page
-        if category.columns.count == 0
+        if category.columns.count.zero?
           1
         else
           category.columns.count * 31

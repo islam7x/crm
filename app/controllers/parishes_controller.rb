@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ParishesController < ApplicationController
-
   before_action :set_parish, only: %i[edit update destroy]
 
   def index
