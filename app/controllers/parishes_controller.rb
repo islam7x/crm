@@ -4,7 +4,7 @@ class ParishesController < ApplicationController
   before_action :set_parish, only: %i[edit update destroy]
 
   def index
-    @parishes = Parish.all.order('date_of_create DESC')
+    @parishes = Parish.all.order(date_of_create: :desc)
   end
 
   def new
@@ -23,7 +23,8 @@ class ParishesController < ApplicationController
   def edit; end
 
   def update
-    if @parish.update(parish_params)
+    if @parish.update(parish_params.merge(remainder:
+                                            parish_params[:quantity].to_i - (@parish.expenses.last.killed + @parish.expenses.last.sold_count)))
       redirect_to parishes_path
     else
       render 'edit'
