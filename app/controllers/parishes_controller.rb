@@ -23,8 +23,8 @@ class ParishesController < ApplicationController
   def edit; end
 
   def update
-    if @parish.update(parish_params.merge(remainder:
-                                            parish_params[:quantity].to_i - (@parish.expenses.last.killed + @parish.expenses.last.sold_count)))
+    if @parish.update(parish_params)
+      update_remainder
       redirect_to parishes_path
     else
       render 'edit'
@@ -38,8 +38,13 @@ class ParishesController < ApplicationController
 
   private
 
+  def update_remainder
+    @expenses_count_killed_sold = @parish.expenses.sum(:killed) + @parish.expenses.sum(:sold_count)
+    @parish.update(remainder: @parish.quantity - @expenses_count_killed_sold)
+  end
+
   def parish_params
-    params.require(:parish).permit(:name, :quantity, :remainder, :date_of_create)
+    params.require(:parish).permit(:name, :quantity, :date_of_create)
   end
 
   def set_parish
