@@ -15,8 +15,8 @@
 
 h3 = @parish.name
 h5 Дата: #{@parish.date_of_create}
-h5 Кол-во: #{ @parish.quantity }
-h5 Остаток: #{ @parish.remainder }
+h5 Кол-во: #{@parish.quantity}
+h5 Остаток: #{@parish.remainder}
 
 - if @expenses.blank?
   p Нет расходов

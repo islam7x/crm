@@ -39,8 +39,13 @@ class ParishesController < ApplicationController
   private
 
   def update_remainder
-    expenses_count_killed_sold = @parish.expenses.sum(:killed) + @parish.expenses.sum(:sold_count)
-    @parish.update(remainder: @parish.quantity - expenses_count_killed_sold)
+    parish =
+      Parish
+        .joins(:expenses)
+        .select('parishes.*, SUM(expenses.killed) AS sum_killed, SUM(expenses.sold_count) AS sum_sold_count')
+        .group(:id)
+        .find(params[:parish_id])
+    @parish.update(remainder: @parish.quantity - (parish.sum_killed + parish.sum_sold_count))
   end
 
   def parish_params
