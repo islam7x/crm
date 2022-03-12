@@ -1,0 +1,11 @@
+h1 Изменение прихода
+.col-md-4.col-md-offset-4
+  = simple_form_for @parish do |f|
+
+    = f.input :name, label: 'Имя:', input_html: { class: 'form-control' }
+    = f.input :quantity, label: 'Количество:', input_html: { class: 'form-control' }
+    label Дата:
+    input#date_of_create.form-control name='parish[date_of_create]' type='date' value=Date.current
+
+    .mt-2
+      = f.submit 'Изменить', class: 'btn btn-success'

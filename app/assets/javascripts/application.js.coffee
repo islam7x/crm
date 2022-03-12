@@ -7,6 +7,7 @@
 #= require_self
 #= require cable.js
 #= require_tree ./components/base
+#= require_tree ./components/parishes
 
 window.CRM = {}
 

@@ -24,7 +24,7 @@ class ItemDecorator < ApplicationDecorator
         h.concat(
           h.link_to(
             h.edit_category_item_path(category_id, id)
-          ) { h.content_tag(:i, '', class: 'items-icon-edit fas fa-edit') }
+          ) { h.content_tag(:i, '', class: 'icon-edit fas fa-edit') }
         )
         if h.current_user.admin?
           h.concat(
@@ -32,7 +32,7 @@ class ItemDecorator < ApplicationDecorator
               h.category_item_path(category_id, id),
               method: :delete,
               data: { confirm: 'Вы уверены?' }
-            ) { h.content_tag(:i, '', class: 'items-icon-trash fas fa-trash-alt') }
+            ) { h.content_tag(:i, '', class: 'icon-trash fas fa-trash-alt') }
           )
         end
       end

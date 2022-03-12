@@ -1,0 +1,18 @@
+h1 Изменение расхода
+.col-md-4.col-md-offset-4
+  = simple_form_for @expense, url: parish_expense_path(@parish) do |f|
+
+    = f.input :killed, label:  'Убито:', input_html: { class: 'form-control' }
+    = f.input :killed_weight, label: 'Вес убитого:', input_html: { class: 'form-control' }
+    = f.input :sold_count, label: 'Кол-во проданного:', input_html: { class: 'form-control' }
+    = f.input :sold_weight, label: 'Вес проданного:', input_html: { class: 'form-control' }
+    label Дата:
+    input#date_of_create.form-control name='expense[date_of_create]' type='date' value=Date.current
+    = f.input :parish_id,
+              as: :select,
+              collection: Parish.all.map { |parish| [parish.name, parish.id] },
+              label: 'Приход:',
+              input_html: { class: 'form-control' }
+
+    .mt-2
+      = f.submit 'Обновить', class: 'btn btn-success'
