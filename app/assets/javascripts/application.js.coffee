@@ -14,6 +14,8 @@ window.CRM = {}
 class CRM.Application
   @init: ->
     CRM.ConfirmDialog.init()
+    if $('li.dropdown-item').length == 0
+      $('li.dropdown').addClass('d-none')
 
 ready = ->
   data = $('body').data()

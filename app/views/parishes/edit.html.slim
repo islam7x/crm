@@ -5,7 +5,7 @@ h1 Изменение прихода
     = f.input :name, label: 'Имя:', input_html: { class: 'form-control' }
     = f.input :quantity, label: 'Количество:', input_html: { class: 'form-control' }
     label Дата:
-    input#date_of_create.form-control name='parish[date_of_create]' type='date' value=Date.current
+    input#date_of_create.form-control name='parish[date_of_create]' type='date' value=@parish.date_of_create
 
     .mt-2
       = f.submit 'Изменить', class: 'btn btn-success'

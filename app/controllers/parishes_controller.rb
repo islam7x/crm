@@ -2,6 +2,7 @@
 
 class ParishesController < ApplicationController
   before_action :set_parish, only: %i[edit update destroy]
+  before_action :set_parish_with_sum, only: :update
 
   def index
     @parishes = Parish.all.order(date_of_create: :desc)
@@ -39,13 +40,8 @@ class ParishesController < ApplicationController
   private
 
   def update_remainder
-    parish =
-      Parish
-        .joins(:expenses)
-        .select('parishes.*, SUM(expenses.killed) AS sum_killed, SUM(expenses.sold_count) AS sum_sold_count')
-        .group(:id)
-        .find(params[:parish_id])
-    @parish.update(remainder: @parish.quantity - (parish.sum_killed + parish.sum_sold_count))
+    @parish
+      .update(remainder: @parish_with_sum.quantity - (@parish_with_sum.sum_killed + @parish_with_sum.sum_sold_count))
   end
 
   def parish_params

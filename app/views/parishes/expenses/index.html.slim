@@ -4,8 +4,8 @@
       .col-lg-4
         .mt-2
           select#parish.form-select name='parish'
-            - @parishes.each do |parish|
-              option value="#{parish.id}" = parish.name
+            - @parishes.decorate.each do |parish|
+              = parish.display_option(params[:parish_id])
       .col-lg-4
         input#search_parish type='submit' value='Показать' class='btn btn-primary mt-2'
 

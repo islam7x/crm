@@ -15,7 +15,7 @@ module Parishes
     end
 
     def create
-      @expense = Expense.new(expense_params)
+      @expense = @parish.expenses.new(expense_params)
       if @expense.save
         update_remainder
         redirect_to parish_expenses_path(@parish)
@@ -47,13 +47,10 @@ module Parishes
     end
 
     def update_remainder
-      parish =
-        Parish
-          .joins(:expenses)
-          .select('parishes.*, SUM(expenses.killed) AS sum_killed, SUM(expenses.sold_count) AS sum_sold_count')
-          .group(:id)
-          .find(params[:parish_id])
-      @parish.update(remainder: @parish.quantity - (parish.sum_killed + parish.sum_sold_count))
+      set_parish_with_sum
+
+      @parish
+        .update(remainder: @parish_with_sum.quantity - (@parish_with_sum.sum_killed + @parish_with_sum.sum_sold_count))
     end
 
     def set_expense
@@ -61,7 +58,7 @@ module Parishes
     end
 
     def expense_params
-      params.require(:expense).permit(:killed, :killed_weight, :sold_count, :sold_weight, :date_of_create, :parish_id)
+      params.require(:expense).permit(:killed, :killed_weight, :sold_count, :sold_weight, :date_of_create)
     end
   end
 end
